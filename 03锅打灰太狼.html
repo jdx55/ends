@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>wolf</title>
+		<style>
+			#gameWrap {
+				width: 320px; height: 480px;
+				box-shadow: 0 0 10px #333;
+				margin: 160px auto 0;
+				background: url(img/game_bg.jpg);
+				transform: scale(1.5);
+	
+			}
+			#score{
+					height:45px;
+					line-height: 45px;
+					padding-left: 80px;
+					color: #fff;
+					font-size: 18px;
+					text-shadow: 0 0 2px #000;
+				}
+			#progress{
+				width: 180px;
+				height:16px;
+				position: absolute;
+				left:63px;
+				top:66px;
+				background: url(img/progress.png) 0 0 no-repeat;
+				background-size:180px 16px;
+				border-radius: 15px; 
+			}
+			#wolfs{
+				position: absolute;
+				left:0px;
+				top:108px;
+		
+			}
+			.grayWolf{
+				background:url(img/grayWolf.png);
+				background-position:0px bottom;  
+			}
+			.redWolf{
+				background:url(img/redWolf.png);
+				background-position:0px bottom;  		
+			}
+			#wolfs div{
+				width: 108px;
+				height:101px;
+				position: absolute;
+				left: 18px;
+				top:52px;
+			}
+			#menu,#gameOver{
+				position: absolute;
+				left:0;
+				right:0;
+				bottom: 32%;
+				text-align: center;
+				font-size: 24px;
+				font-weight:bold;
+				color: #f60;
+				text-shadow: 0 0 5px #ff0;
+	
+			}
+			#menu p{
+				cursor: pointer;
+			}
+			#gameOver{
+				width: 100%;
+				height:100%;
+				padding-top: 60%;
+				box-sizing: border-box;
+				bottom: 0;
+				z-index:2;
+				background: rgba(0,0,0,0.3);
+				display:none;
+		
+			}
+		</style>
+	</head>
+	<body>
+		<div id="gameWrap">
+			<div id="score">0</div>
+			<div id="progress"></div>
+			<div id="wolfs">
+				<!--<div class="Wolf grayWolf"></div>  -->
+			</div>
+			<div id="menu">
+				<p id="start">开始游戏</p>
+				<p id="info">游戏说明</p>
+			</div>
+			<div id="gameOver">
+				<p>游戏结束</p>
+				<p></p>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var progressBar = document.getElementById("progress"); //倒计时进度条	
+			var wolfBox=document.getElementById("wolfs");
+			var scoreEle=document.getElementById("score");
+			var gameOver=document.getElementById("gameOver");
+			var start=document.getElementById('start');
+			var score = 0;
+			var timer = null;
+			
+			var pos = [{
+					x: 18,
+					y: 52
+				},
+				{
+					x: 98,
+					y: 8
+				},
+				{
+					x: 186,
+					y: 35
+				},
+				{
+					x: 15,
+					y: 114
+				},
+				{
+					x: 104,
+					y: 84
+				},
+				{
+					x: 200,
+					y: 104
+				},
+				{
+					x: 32,
+					y: 186
+				},
+				{
+					x: 120,
+					y: 166
+				},
+				{
+					x: 208,
+					y: 188
+				}
+			];			
+			//start绑定事件
+			start.onclick=function(){
+				this.parentNode.style.display='none';
+				gameStart();
+			}
+			
+			//开始游戏
+			function gameStart(){
+				timer=setInterval(function(){
+					creatWolf();
+				},2000);
+				progressFn();
+
+			}
+			
+			
+			//计时器（进度条）
+			function progressFn(){
+				var percent=progressBar.offsetWidth;   //180
+				var percentTimer=setInterval(function(){
+					percent--;
+					if(percent<=0)
+					{
+						clearInterval(percentTimer);
+						gameover();
+					}
+					progressBar.style.width=percent+'px';
+				},100)
+			}
+			
+			
+			//游戏结束
+			function gameover(){
+				gameOver.style.display = "block";
+				clearInterval(timer);
+				gameOver.lastElementChild.innerHTML=score;
+			}
+			
+			
+			
+			//创建狼
+			function creatWolf(){
+				var oDiv=document.createElement('div');
+				oDiv.clicked=true;
+				var num=rand(0,100);
+				oDiv.className=num>55?"redWolf":"grayWolf";
+				wolfBox.appendChild(oDiv);
+				wolfPlay(oDiv);
+				oDiv.onclick=function(){
+					hitWolf(this);
+				}
+			}
+			
+			
+			//点击狼的得分
+			function hitWolf(obj){
+				if(obj.clicked){
+					if(obj.className=='grayWolf') score+=10;
+					if(obj.className=='redWolf') score-=10;
+					scoreEle.innerHTML=score;
+					obj.clicked=false;
+					hitWolfMv(obj);
+					
+				}
+				else{
+					return;
+				}
+				
+			}
+			
+			
+			//点击狼的特效
+			function hitWolfMv(wolf){
+				var i=6;
+				clearInterval(wolf.entertimer);
+				wolf.endtimer=setInterval(function(){
+					wolf.style.backgroundPosition=-108*i+'px';
+					i++;
+					if(i==10)
+					{
+						clearInterval(wolf.endtimer);
+						wolfBox.removeChild(wolf);
+					}
+				},100)
+				
+			}
+
+			
+			
+			//确定狼的位置，设置狼的出来和回去的动画
+			function wolfPlay(wolf){
+				var index=rand(0,pos.length-1);
+				var x=pos[index].x;
+				var y=pos[index].y;
+				var i=0;
+				var n=1;
+				wolf.style.left=x+'px';
+				wolf.style.top=y+'px';
+				
+				wolf.entertimer=setInterval(function(){
+					
+					wolf.style.backgroundPosition=-108*i+'px';
+					i+=n;   
+					if(i==6)
+					{
+						n=-1;
+						i+=n; 
+					}
+					if(i<0)
+					{
+						clearInterval(wolf.entertimer);
+						if(wolf.className=="redWolf"){
+							score+=10;
+							scoreEle.innerHTML=score;
+						}
+						wolfBox.removeChild(wolf);
+					}
+					
+				},100)
+				
+			}
+
+			//随机函数
+			function rand(x,y)
+			{
+				return Math.floor(Math.random()*(y-x)+x);
+			}
+			
+
+			
+			
+			//步骤:
+			//1.绑定开始事件
+			//2.开始游戏
+			//3.创建狼的标签
+			//4:封装随机数函数
+			//5.通过随机数来确定是红狼还是灰狼
+			//6.确定狼的位置，设置狼的出来和回去的动画
+			//7.把狼的所有可能出现的位置放在数组中
+			//8.随机的确定狼出现的位置
+			//9.定时器(狼的出来回去的动画)
+			//10.给狼添加点击事件
+			//11.点击狼的得分
+			//12.点击狼时的特效
+			//13.进度条
+			//14.游戏结束
+		</script>
+		
+
+	</body>
+</html>
