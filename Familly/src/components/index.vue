@@ -394,7 +394,7 @@ let index_btn = (index) =>{
 }
 .drawer_Echars{
 	width: 100%;
-	height: 50%;
+	height: 40%;
 	margin: 0 auto;
 	// background-color: grey;
 }
@@ -402,8 +402,8 @@ let index_btn = (index) =>{
 	display: flex;
 	position: relative;
 	justify-content: center;
-	width: 80%;
-	height: 75%;
+	width: 40%;
+	height: 50%;
 	margin: 0 auto;
 	border-radius: 15px;
 	background: url(https://static-mp-d549bd85-eabc-4c00-a019-e4e1fefbe43a.next.bspapp.com/HomeWork/018.jpg)no-repeat center center/cover;
@@ -412,17 +412,14 @@ let index_btn = (index) =>{
 
 #cans{
 	position: absolute;
-	top: 30px;
-	width: 80%;
+	top: 25px;
+	width: 62%;
 	height: 80%;
 }
-#zr_0{
-	width: 200px;
-	height: 200px;
-}
+
 .drawer_wrap{
 	width: 80%;
-	height: 25%;
+	height: 30%;
 	margin: 0 auto;
 	border-radius: 10px;
 	background: url(https://static-mp-d549bd85-eabc-4c00-a019-e4e1fefbe43a.next.bspapp.com/HomeWork/019.jpg)no-repeat center center/cover;
