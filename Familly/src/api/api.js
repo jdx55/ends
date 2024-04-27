@@ -8,7 +8,7 @@ export const $users = (params) => {
 }
 // 删除用户------------------------
 export const $delusers = (params) => {
-	return http.post('/delusers', params);
+	return http.post('/delarrange', params);
 }
 // 添加用户-------------------------
 export const $addusers = (params) => {
@@ -17,4 +17,21 @@ export const $addusers = (params) => {
 // 修改用户-------------------------
 export const $editusers = (params) => {
 	return http.post('/editusers', params);
+}
+// --------------------------------------
+// 用户数据---------------------
+export const $arrange = (params) => {
+	return http.get('/arrange', params);
+}
+// 删除用户------------------------
+export const $delarrange = (params) => {
+	return http.post('/delarrange', params);
+}
+// 添加用户-------------------------
+export const $addarrange = (params) => {
+	return http.post('/addarrange', params);
+}
+// 修改用户-------------------------
+export const $editarrange = (params) => {
+	return http.post('/editarrange', params);
 }

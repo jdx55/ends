@@ -10,10 +10,19 @@ const sql = require('./sql');
 // 个人信息
 router.get('/users',sql.getUsers)
 // 删除用户
-router.post('/delusers',sql.delusers)
+router.post('/delarrange',sql.delarrange)
 // 添加用户
 router.post('/addusers',sql.addusers)
 // 修改用户
 router.post('/editusers',sql.editusers)
+// 角色料理------------------------------------------
+// 个人信息
+router.get('/arrange',sql.getArrange)
+// 删除用户
+router.post('/delarrange',sql.delarrange)
+// 添加用户
+router.post('/addarrange',sql.addarrange)
+// 修改用户
+router.post('/editarrange',sql.editarrange)
 // 暴露
 module.exports = router;

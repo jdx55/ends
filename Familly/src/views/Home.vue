@@ -14,7 +14,7 @@
 						active-text-color="#ffd04b"
 					>
 						<el-menu-item index="1" @click="navTo('/index')">
-							<template #title>首页</template>
+							<template #title>展厅</template>
 						</el-menu-item>
 						<el-sub-menu index="2">
 							<template #title>
@@ -22,12 +22,13 @@
 								<span>角色</span>
 							</template>
 							<el-menu-item-group>
-								<el-menu-item index="2-1" @click="navTo('/user')" style="font-size: 15px;">角色信息</el-menu-item>
-								<el-menu-item index="2-2" style="font-size: 15px;">料理属性</el-menu-item>
+								<el-menu-item index="2-1" @click="navTo('/user')" style="font-size: 15px;">实名信息</el-menu-item>
+								<el-menu-item index="2-2" @click="navTo('')" style="font-size: 15px;">角色信息-待定</el-menu-item>
+								<el-menu-item index="2-3" @click="navTo('/arrange')" style="font-size: 15px;">料理属性</el-menu-item>
 							</el-menu-item-group>
 						</el-sub-menu>
 						<el-menu-item index="3">
-							<template #title>世界料理</template>
+							<template #title>待定......</template>
 						</el-menu-item>
 					</el-menu>
 				</el-col>
@@ -37,8 +38,10 @@
 	    <el-container>
 			<!-- 头部内容 -->
 	      <el-header>
-			  <span style="color: green; font-size: 30px;">(๑òᆺó๑) 托拉姆 (๑òᆺó๑)</span> 
-		  </el-header>
+			
+			<img class="icos" src="https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0000.jpg" alt=""> 
+			<span class="sp">๑托拉姆物语๑</span>
+		</el-header>
 		  <!-- 表格内容 -->
 	      <el-main>
 				<router-view></router-view>
@@ -82,6 +85,8 @@ const router = useRouter();
 	color: var(--el-text-color-primary);
 	text-align: center;
 	line-height: 60px;
+	display: flex;
+	justify-content: space-evenly;
 	}
 	
 	.el-aside {
@@ -101,5 +106,17 @@ const router = useRouter();
 	.adver{
 		width: 100%;
 		height: 100%;
+	}
+	.icos{
+		width: 100px;
+		height: 60px;
+		border-radius: 5px;
+		margin-left: 220px;
+	}
+	.sp{
+		position: relative;
+		right: 240px;
+		font-size: 30px;
+		
 	}
 </style>

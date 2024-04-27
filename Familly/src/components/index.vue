@@ -67,12 +67,12 @@ import * as echarts from "echarts";
 import { reactive,ref,computed,onMounted,onUpdated,onBeforeMount  } from 'vue';
 
 let lists = reactive([
+	{title: "https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0000.jpg"},
 	{title: "https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0001.png"},
 	{title: "https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0002.png"},
 	{title: "https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0003.png"},
 	{title: "https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0004.jpg"},
-	{title: "https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0005.jpg"},
-	{title: "https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/1000.jpg"}
+	{title: "https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0005.jpg"}
 ]) 
 // 下部分
 let current = reactive([
