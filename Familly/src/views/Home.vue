@@ -81,7 +81,7 @@ const router = useRouter();
 	}
 	
 	.el-header{
-	background-color: #b3c0d1;
+	background-color: ghostwhite;
 	color: var(--el-text-color-primary);
 	text-align: center;
 	line-height: 60px;
@@ -91,7 +91,7 @@ const router = useRouter();
 	
 	.el-aside {
 	width: 8%;
-	background-color: #d3dce6;
+	background-color: darkgrey;
 	color: var(--el-text-color-primary);
 	text-align: center;
 	}
