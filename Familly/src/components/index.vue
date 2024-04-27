@@ -46,10 +46,12 @@
 					<div>{{ item.txt }}</div>
 				</div>
 				<div class="drawer_Echars">
-					<div style="text-align: left; padding: 1.25rem;">属性：(暂定......)</div>
+					
+					<div style="text-align: left; padding: 1.25rem;"></div>
 					<div id="drawer_Echars_box" >
-						<!-- <e-charts id="cans" :option="option"/> -->
+						<e-charts id="cans" :option="option"/>
 					</div>
+					
 				</div>
 				<div class="drawer_wrap">
 					<div>职业介绍：</div>
@@ -103,12 +105,7 @@ let current = reactive([
 		index: 5,
 		text: '职业：拔刀剑',
 		video: 'https://static-mp-d549bd85-eabc-4c00-a019-e4e1fefbe43a.next.bspapp.com/HomeWork/video006.mp4'
-	},
-	{
-		index: 6,
-		text: '职业：双手剑',
-		video: 'https://static-mp-d549bd85-eabc-4c00-a019-e4e1fefbe43a.next.bspapp.com/HomeWork/video007.mp4'
-	},
+	}
 ])
 // 详情
 let video_index = reactive([
@@ -119,140 +116,156 @@ let video_index = reactive([
 		]
 	)
 let texts = ref({drewer: false})
-let tes = reactive([''])
 
+let option;
+var tes = reactive([])
+// var tesval;
 let index_btn = (index) =>{
 	let indexs = index;
 	if(index == 0){
 		tes = reactive([
 			{
-				imgs: 'https://static-mp-d549bd85-eabc-4c00-a019-e4e1fefbe43a.next.bspapp.com/HomeWork/010.jpg',
+				imgs: 'https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0006.jpg',
 				txt: '职业：剑',
 				intr: '使用两把单手剑作为主要武器的战斗万金油，有着不俗伤害的同时也有着很强的生存能力。',
-				city1: '1',
-				city2: '1',
-				city3: '1',
-				city4: '1',
-				city5: '1',
-				city6: '1'
+				city1: 255,
+				city2: 0,
+				city3: 0,
+				city4: 0,
+				city5: 247,
+				city6: 0
 			}
 		])
 	}else if(index == 1){
 		
 		tes = reactive([
 			{
-				imgs: 'https://static-mp-d549bd85-eabc-4c00-a019-e4e1fefbe43a.next.bspapp.com/HomeWork/011.jpg',
+				imgs: 'https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0007.jpg',
 				txt: '职业：杖',
 				intr: '使用法杖作为主要武器的魔法师，通过吟唱能施展出毁天灭地的魔法。',
-				city1: '2',
-				city2: '2',
-				city3: '2',
-				city4: '2',
-				city5: '2',
-				city6: '2'
+				city1: 247,
+				city2: 255,
+				city3: 0,
+				city4: 0,
+				city5: 0,
+				city6: 0
 			}
 		])
 	}else if(index == 2){
 		tes = reactive([
 			{
-				imgs: 'https://static-mp-d549bd85-eabc-4c00-a019-e4e1fefbe43a.next.bspapp.com/HomeWork/012.jpg',
+				imgs: 'https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0008.jpg',
 				txt: '职业：拳',
 				intr: '使用拳套作为主要武器的拳法家，谁说双拳难敌四手，看我欧拉！欧拉！欧拉！',
-				city1: '3',
-				city2: '3',
-				city3: '3',
-				city4: '3',
-				city5: '3',
-				city6: '3'
+				city1: 247,
+				city2: 0,
+				city3: 0,
+				city4: 255,
+				city5: 0,
+				city6: 0
 			}
 		])
 	}else if(index == 3){
 		tes = reactive([
 			{
-				imgs: 'https://static-mp-d549bd85-eabc-4c00-a019-e4e1fefbe43a.next.bspapp.com/HomeWork/013.jpg',
+				imgs: 'https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0009.jpg',
 				txt: '职业：弓',
 				intr: '使用长弓作为主要武器的弓箭手，明明用的是长弓，却能射的和加特林一样快呀啊喂！',
-				city1: '4',
-				city2: '4',
-				city3: '4',
-				city4: '4',
-				city5: '4',
-				city6: '4'
+				city1: 247,
+				city2: 0,
+				city3: 0,
+				city4: 0,
+				city5: 255,
+				city6: 0
 			}
 		])
 	}else if(index == 4){
 		tes = reactive([
 			{
-				imgs: 'https://static-mp-d549bd85-eabc-4c00-a019-e4e1fefbe43a.next.bspapp.com/HomeWork/014.jpg',
+				imgs: 'https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0010.jpg',
 				txt: '职业：斧枪',
 				intr: '使用长枪作为主要武器的枪术师，枪乃百兵之王，聚力于一点，出之必杀。',
-				city1: '5',
-				city2: '5',
-				city3: '5',
-				city4: '5',
-				city5: '5',
-				city6: '5'
+				city1: 255,
+				city2: 0,
+				city3: 0,
+				city4: 247,
+				city5: 0,
+				city6: 0
 			}
 		])
 	}else if(index == 5){
-		tes = reactive([
+		tes= reactive([
 			{
-				imgs: 'https://static-mp-d549bd85-eabc-4c00-a019-e4e1fefbe43a.next.bspapp.com/HomeWork/015.jpg',
+				imgs: 'https://static-mp-33881495-7888-4447-bf26-fb6742698492.next.bspapp.com/Tlm/0011.jpg',
 				txt: '职业：拔刀剑',
 				intr: '使用武士刀作为主要武器的武忍士，神の速さが開くとすぐに、，私は嵐でした！！！',
-				city1: '6',
-				city2: '6',
-				city3: '6',
-				city4: '6',
-				city5: '6',
-				city6: '6'
-			}
-		])
-	}else if(index == 6){
-		tes = reactive([
-			{
-				imgs: 'https://static-mp-d549bd85-eabc-4c00-a019-e4e1fefbe43a.next.bspapp.com/HomeWork/016.jpg',
-				txt: '职业：双手剑',
-				intr: '使用重剑作为主要武器的大剑师，重剑无锋，大巧不工',
-				city1: '7',
-				city2: '7',
-				city3: '7',
-				city4: '7',
-				city5: '7',
-				city6: '7'
+				city1: 247,
+				city2: 0,
+				city3: 0,
+				city4: 0,
+				city5: 255,
+				city6: 0
 			}
 		])
 	}
-
+	// 数据图    暂定
+	option = {
+	
+	title: {
+	  text: ''
+	},
+	
+	grid: {
+		  position: 'center',
+	   },
+	   tooltip : {
+	   //雷达图的tooltip不会超出div，也可以设置position属性，position定位的tooltip 不会随着鼠标移动而位置变化，不友好
+		  confine: true,
+		  enterable: true, //鼠标是否可以移动到tooltip区域内
+	   },
+	radar: {
+	  // shape: 'circle',
+	  indicator: [
+		{ name: '力量', max: 255 },
+		{ name: '智力', max: 255 },
+		{ name: '耐力', max: 255 },
+		{ name: '敏捷', max: 255 },
+		{ name: '灵巧', max: 255 },
+		{ name: '自选', max: 255 }
+	  ],
+	  name: {
+		fontSize: 8,
+                textStyle: {
+                                padding: [-10, -12]  // 控制文字padding
+								
+                            }
+            }
+	},
+	series: [
+	  {
+		type: 'radar',
+		data: [
+		  {
+			value: [tes[0].city1, tes[0].city2, tes[0].city3, tes[0].city4, tes[0].city5, tes[0].city6],
+		  },
+		 
+		]
+	  }
+	],
+	width: '250px',
+	height: '250px'
+  };
+// 创建节点
+// setTimeout(() => {
+// 	var drawer_Echars_box = document.getElementById('drawer_Echars_box');
+//  	console.log(drawer_Echars_box);
+// 	var echartsq ='<e-charts id="cans" :option="option">';
+// 	drawer_Echars_box.insertAdjacentHTML("beforeend",echartsq);
+// 	}, 1000);
 }
 
 
-// 数据图    暂定
-// let option = reactive({
-// 	title: {
-// 	text: '属 性'
-// 	},
-// 	radar: {
-// 	  indicator: [
-// 	    { name: '力量: STR', max: 255 },
-// 	    { name: '智力：INT', max: 255 },
-// 	    { name: '耐力：STA', max: 255 },
-// 	    { name: '敏捷：AGL', max: 255 },
-// 	    { name: '灵巧: DEX', max: 255 }
-// 	  ]
-// 	},
-// 	series: [
-// 	  {
-// 	    symbol: 'none',
-// 	    type: 'radar',
-// 	    data: [
-// 	      {
-// 	        value: [255, 51, 153, 102, 204]
-// 	      }
-// 	    ]
-// 	  }
-// 	]
-// })
+
 
 
 </script>
@@ -309,11 +322,11 @@ let index_btn = (index) =>{
 	box-shadow: 20px 20px 4px rgba(0,0,0,0.18),0 0 6px rgba(0,0,0,0.18);
 }
 .index_down_box {
-	width: 180px;
+	width: 205px;
 	height: 200px;
 	display: block;
 	border: 1px solid gainsboro;
-	margin-left: 3px;
+	margin-left: 8px;
 	margin-top: 50px;
 	border-radius: 5px;
 	overflow: hidden;
@@ -386,6 +399,9 @@ let index_btn = (index) =>{
 	// background-color: grey;
 }
 #drawer_Echars_box{
+	display: flex;
+	position: relative;
+	justify-content: center;
 	width: 80%;
 	height: 75%;
 	margin: 0 auto;
@@ -395,10 +411,15 @@ let index_btn = (index) =>{
 }
 
 #cans{
-	width: 100%;
-	height: 100%;
+	position: absolute;
+	top: 30px;
+	width: 80%;
+	height: 80%;
 }
-
+#zr_0{
+	width: 200px;
+	height: 200px;
+}
 .drawer_wrap{
 	width: 80%;
 	height: 25%;
