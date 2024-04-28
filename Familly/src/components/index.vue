@@ -256,12 +256,12 @@ let index_btn = (index) =>{
 	height: '250px'
   };
 // 创建节点
-// setTimeout(() => {
-// 	var drawer_Echars_box = document.getElementById('drawer_Echars_box');
+//  setTimeout(() => {
+// 	var drawer_Echars_box = document.getElementsByClassName('drawer_Echars');
 //  	console.log(drawer_Echars_box);
-// 	var echartsq ='<e-charts id="cans" :option="option">';
-// 	drawer_Echars_box.insertAdjacentHTML("beforeend",echartsq);
-// 	}, 1000);
+//  	var echartsq ='<div id="drawer_Echars_box" ><e-charts id="cans" :option="option"></div>';
+//  	drawer_Echars_box.insertAdjacentHTML("beforeend",echartsq);
+//  	}, 1000);
 }
 
 

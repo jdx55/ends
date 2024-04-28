@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { $users,$arrange } from '../api/api.js'
+import { $users,$arrange,$chacter } from '../api/api.js'
 
 export const useStore = defineStore('users', {
 	state: () => {
@@ -17,7 +17,7 @@ export const useStore = defineStore('users', {
 		}
 	}
 });
-
+// 料理信息-------------------------------------------------------
 export const useStorearr = defineStore('arrange', {
 	state: () => {
 		return {
@@ -28,6 +28,23 @@ export const useStorearr = defineStore('arrange', {
 		async asyncGetArrange() {
 			//获取数据
 			await $arrange().then((res) => {
+				var _list = res.data.list;
+				this.list = _list;
+			}).catch(err => console.log('Error: ' + err));
+		}
+	}
+});
+// 角色信息-------------------------------------------------------
+export const useStorerole = defineStore('chacter', {
+	state: () => {
+		return {
+			list: []
+		}
+	},
+	actions: {
+		async asyncGetChacter() {
+			//获取数据
+			await $chacter().then((res) => {
 				var _list = res.data.list;
 				this.list = _list;
 			}).catch(err => console.log('Error: ' + err));

@@ -35,3 +35,20 @@ export const $addarrange = (params) => {
 export const $editarrange = (params) => {
 	return http.post('/editarrange', params);
 }
+// 角色数据--------------------------------------
+// 用户数据---------------------
+export const $chacter = (params) => {
+	return http.get('/chacter', params);
+}
+// 删除用户------------------------
+export const $delchacter = (params) => {
+	return http.post('/delchacter', params);
+}
+// 添加用户-------------------------
+export const $addchacter = (params) => {
+	return http.post('/addchacter', params);
+}
+// 修改用户-------------------------
+export const $editchacter = (params) => {
+	return http.post('/editchacter', params);
+}

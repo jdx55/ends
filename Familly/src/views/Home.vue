@@ -23,7 +23,7 @@
 							</template>
 							<el-menu-item-group>
 								<el-menu-item index="2-1" @click="navTo('/user')" style="font-size: 15px;">实名信息</el-menu-item>
-								<el-menu-item index="2-2" @click="navTo('')" style="font-size: 15px;">角色信息-待定</el-menu-item>
+								<el-menu-item index="2-2" @click="navTo('/character')" style="font-size: 15px;">角色信息</el-menu-item>
 								<el-menu-item index="2-3" @click="navTo('/arrange')" style="font-size: 15px;">料理属性</el-menu-item>
 							</el-menu-item-group>
 						</el-sub-menu>
