@@ -16,6 +16,7 @@
 						<el-menu-item index="1" @click="navTo('/index')">
 							<template #title>展厅</template>
 						</el-menu-item>
+
 						<el-sub-menu index="2">
 							<template #title>
 								<i class="el-icon-location"></i>
@@ -27,9 +28,18 @@
 								<el-menu-item index="2-3" @click="navTo('/arrange')" style="font-size: 15px;">料理属性</el-menu-item>
 							</el-menu-item-group>
 						</el-sub-menu>
-						<el-menu-item index="3">
-							<template #title>待定......</template>
-						</el-menu-item>
+
+						<el-sub-menu index="3">
+							<template #title>
+								<i class="el-icon-location"></i>
+								<span>游戏区</span>
+							</template>
+							<el-menu-item-group>
+								<el-menu-item index="3-1" @click="navTo('/eatfood')" style="font-size: 15px;">今天吃啥</el-menu-item>
+								<el-menu-item index="3-2" @click="navTo('')" style="font-size: 15px;">拳打仇人</el-menu-item>
+								<el-menu-item index="3-3" @click="navTo('')" style="font-size: 15px;">敲敲木鱼</el-menu-item>
+							</el-menu-item-group>
+						</el-sub-menu>
 					</el-menu>
 				</el-col>
 			</el-row>
